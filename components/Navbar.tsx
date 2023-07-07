@@ -41,7 +41,7 @@ console.log(session)
         ) : (
           <AuthProviders />
         )}
-      </div>
+      </div>   
     </nav>
   );
 };

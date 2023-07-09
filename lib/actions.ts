@@ -37,7 +37,7 @@ export const createUser = (email: string, name: string, avatarUrl: string) => {
       avatarUrl,
     },
   };
-  return makeGraphQLRequest(createUserMutation, variables);
+  return makeGraphQLRequest(createUserMutation,variables);
 };
 export const fetchToken =async ()=>{
   try {

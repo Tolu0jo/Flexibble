@@ -4,13 +4,13 @@ import React from "react";
 import { NavLinks } from "@/constants";
 import { getCurrentUser } from "@/lib/session";
 import AuthProviders from "./AuthProvider";
-
+import { signOut } from "next-auth/react";
+import ProfileMenu from "./ProfileMenu";
 
 const Navbar = async () => {
-const session = await getCurrentUser();
-console.log(session)
+  const session = await getCurrentUser();
   return (
-    <nav className="flexBetween navbar">
+    <section className="flexBetween navbar">
       <div className="flex-1 flexStart gap-10">
         <Link href="/">
           <Image src="/logo.svg" width={115} height={43} alt="probble" />
@@ -24,28 +24,17 @@ console.log(session)
         </ul>
       </div>
       <div className="flexCenter gap-4">
-        {session?.user? (
-          <>{session?.user?.image &&
-            <Link href={`/profile/${session?.user?.id}`}>
-            <Image 
-            src={session?.user?.image}
-            width={40}
-            height={40}
-            className="rounded-full"
-            alt={session?.user?.name}
-             />
-             </Link>} 
+        {session?.user ? (
+          <>           
+            <ProfileMenu session ={session}/>       
             <Link href={"/create-project"}>Share Work</Link>
           </>
-          
         ) : (
           <AuthProviders />
         )}
-      </div>   
-    </nav>
+      </div>
+    </section>
   );
 };
-
-
 
 export default Navbar;

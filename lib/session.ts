@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
         {
           ...token,
           iss: "grafbase",
-          exp: Math.floor(Date.now() / 1000) + 60 * 60, //expires in 13hrs
+          exp: Math.floor(Date.now() / 1000) + 60 * 60 * 13, //expires in 13hrs
         },
         secret
       );
@@ -59,7 +59,7 @@ export const authOptions: NextAuthOptions = {
         const userExists = (await getUser(user?.email as string)) as {
           user?: UserProfile;
         };
-        if (!userExists) {
+        if (!userExists?.user) {
             await createUser(
             user.name as string,
             user.email as string,

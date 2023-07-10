@@ -9,6 +9,7 @@ import ProfileMenu from "./ProfileMenu";
 
 const Navbar = async () => {
   const session = await getCurrentUser();
+  
   return (
     <section className="flexBetween navbar">
       <div className="flex-1 flexStart gap-10">

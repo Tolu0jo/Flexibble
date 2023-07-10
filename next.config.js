@@ -2,8 +2,8 @@
 const nextConfig = {
   images: {
     domains: [
-      "lh3.googleusercontent.com", //to get the images from google to show on next
-    ],
+      "lh3.googleusercontent.com", 
+      "res.cloudinary.com"]
   },
   experimental: {
     serverComponentsExternalPackages: ["cloudinary", "graphql-request"],

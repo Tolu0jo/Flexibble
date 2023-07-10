@@ -14,42 +14,8 @@ type Props = {
 };
 
 const ProjectForm = ({ type, session }: Props) => {
-  const  router = useRouter()
-  const handleFormSubmit =async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    const{token} = await fetchToken()
-    try {
-      if(type === 'create') {
-     const create =   await createNewProject(form,session?.user?.id,token)
+  const router = useRouter();
 
-        router.push('/')
-      }
-    
-    } catch (error) {
-      console.log(error)
-    }finally{
-      setIsSubmitting(false)
-    }
-  };
-  const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const file = e.target.files?.[0];
-    if (!file) return;
-    if (!file.type.includes("image")) {
-      return alert("please upload an image file");
-    }
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      const result = reader.result as string;
-      handleStateChange("image", result);
-    };
-  };
-
-  const handleStateChange = (fieldName: string, value: string) => {
-    setForm((prev) => ({ ...prev, [fieldName]: value }));
-  };
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
     title: "",
@@ -59,6 +25,42 @@ const ProjectForm = ({ type, session }: Props) => {
     githubUrl: "",
     category: "",
   });
+
+  const handleStateChange = (fieldName: string, value: string) => {
+    setForm((prev) => ({ ...prev, [fieldName]: value }));
+  };
+
+  const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (!file.type.includes("image")) {            
+      return alert("please upload an image file");
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const result = reader.result as string;
+      handleStateChange("image", result);
+    };
+  };
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const { token } = await fetchToken();
+    try {
+      if (type === "create") {
+   
+        const create = await createNewProject(form, session?.user?.id, token);
+
+        router.push("/");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <form onSubmit={handleFormSubmit} className="flexStart form">
       <div className="flexStart form_image-container">
@@ -131,4 +133,3 @@ const ProjectForm = ({ type, session }: Props) => {
 };
 
 export default ProjectForm;
- 

@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
         {
           ...token,
           iss: "grafbase",
-          exp: Math.floor(Date.now() / 1000) + 60 * 60 * 13, //expires in 13hrs
+          exp: Math.floor(Date.now() / 1000) + 60, //expires in 13hrs
         },
         secret
       );

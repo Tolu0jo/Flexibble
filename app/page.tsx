@@ -32,7 +32,7 @@ type ProjectSearch ={
   return (
     <section className="flex-start flex-col paddings mb-16">
         <h1>Categories</h1>
-       <section className="project-grid">
+       <section className="projects-grid">
         {projectsToDisplay.map(({node}:{node:ProjectInterface})=>(
           <ProjectCard
           key ={node?.id}

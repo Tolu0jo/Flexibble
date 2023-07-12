@@ -1,6 +1,7 @@
 "use client"; // because it wont be rendered on the server and we want to use useState
 import { useState, useEffect } from "react";
 import { getProviders, signIn } from "next-auth/react";
+import Button from "./Button";
 
 type Provider = {
   id: string;
@@ -31,9 +32,9 @@ export const AuthProviders = () => {
   return (
     <div>
       {Object.values(providers).map((provider: Provider, i) => (
-        <button key={i} onClick={() => signIn(provider?.id)}>
-          {provider.id}
-        </button>
+        <Button key={i} 
+        title="Sign In"
+        handleClick={() => signIn(provider?.id)}/>
       ))}
     </div>
   );

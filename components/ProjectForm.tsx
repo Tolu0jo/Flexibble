@@ -1,5 +1,5 @@
 "use client";
-import { SessionInterface } from "@/common.types";
+import { ProjectInterface, SessionInterface } from "@/common.types";
 import Image from "next/image";
 import React, { ChangeEvent, useState } from "react";
 import FormField from "./FormField";
@@ -11,19 +11,20 @@ import { useRouter } from "next/navigation";
 type Props = {
   type: string;
   session: SessionInterface;
+  project:ProjectInterface 
 };
 
-const ProjectForm = ({ type, session }: Props) => {
+const ProjectForm = ({ type, session,project }: Props) => {
   const router = useRouter();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
-    title: "",
-    description: "",
-    image: "",
-    liveSiteUrl: "",
-    githubUrl: "",
-    category: "",
+    title:project?.title || "",
+    description:project?.description || "",
+    image:project?.image || "",
+    liveSiteUrl:project?.liveSiteUrl || "",
+    githubUrl:project?.githubUrl || "",
+    category:project?.category || "",
   });
 
   const handleStateChange = (fieldName: string, value: string) => {

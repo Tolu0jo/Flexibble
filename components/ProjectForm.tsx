@@ -11,20 +11,20 @@ import { useRouter } from "next/navigation";
 type Props = {
   type: string;
   session: SessionInterface;
-  project:ProjectInterface 
+  project: ProjectInterface;
 };
 
-const ProjectForm = ({ type, session,project }: Props) => {
+const ProjectForm = ({ type, session, project }: Props) => {
   const router = useRouter();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
-    title:project?.title || "",
-    description:project?.description || "",
-    image:project?.image || "",
-    liveSiteUrl:project?.liveSiteUrl || "",
-    githubUrl:project?.githubUrl || "",
-    category:project?.category || "",
+    title: project?.title || "",
+    description: project?.description || "",
+    image: project?.image || "",
+    liveSiteUrl: project?.liveSiteUrl || "",
+    githubUrl: project?.githubUrl || "",
+    category: project?.category || "",
   });
 
   const handleStateChange = (fieldName: string, value: string) => {
@@ -35,7 +35,7 @@ const ProjectForm = ({ type, session,project }: Props) => {
     e.preventDefault();
     const file = e.target.files?.[0];
     if (!file) return;
-    if (!file.type.includes("image")) {            
+    if (!file.type.includes("image")) {
       return alert("please upload an image file");
     }
     const reader = new FileReader();
@@ -51,12 +51,12 @@ const ProjectForm = ({ type, session,project }: Props) => {
     const { token } = await fetchToken();
     try {
       if (type === "create") {
-       await createNewProject(form, session?.user?.id, token);
+        await createNewProject(form, session?.user?.id, token);
         router.push("/");
       }
-      if (type === "edit"){
-        await updateProject(form,project?.id,token)
-        router.push("/"); 
+      if (type === "edit") {
+        await updateProject(form, project?.id, token);
+        router.push("/");
       }
     } catch (error) {
       console.log(error);
@@ -98,14 +98,14 @@ const ProjectForm = ({ type, session,project }: Props) => {
         state={form.description}
         placeholder="Probble"
         setState={(value) => handleStateChange("description", value)}
-      />{" "}
+      />
       <FormField
         type="url"
         title="website Url "
         state={form.liveSiteUrl}
         placeholder="https://new.pro"
         setState={(value) => handleStateChange("liveSiteUrl", value)}
-      />{" "}
+      />
       <FormField
         type="url"
         title="Github Url "

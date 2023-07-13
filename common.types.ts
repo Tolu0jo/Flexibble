@@ -45,6 +45,7 @@ export interface UserProfile {
 }
 
 export interface SessionInterface extends Session {
+  id: string;
   user: User & {
     id: string;
     name: string;
@@ -60,4 +61,9 @@ export interface ProjectForm {
   liveSiteUrl: string;
   githubUrl: string;
   category: string;
+}
+
+export interface userForm {
+  description: string;
+  linkedinUrl: string;
 }

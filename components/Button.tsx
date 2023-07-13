@@ -10,6 +10,7 @@ type Props = {
   type?: "button" | "submit";
   bgColor?: string;
   textColor?: string;
+ 
 };
 const Button = ({
   title,

@@ -1,4 +1,4 @@
-import { ProjectForm } from "@/common.types";
+import { ProjectForm, userForm } from "@/common.types";
 import {
   createProjectMutation,
   createUserMutation,
@@ -8,6 +8,7 @@ import {
   getUserQuery,
   projectsQuery,
   updateProjectMutation,
+  updateUserMutation,
 } from "@/graphql";
 import { GraphQLClient } from "graphql-request";
 
@@ -138,4 +139,16 @@ const variables ={
 }
   client.setHeader("Authorization", `Bearer ${token}`);
   return makeGraphQLRequest(updateProjectMutation,variables)
+ }
+
+
+
+export const updateUser = (form:userForm, userId:string, token:string)=>{
+
+const variables ={
+  id:userId,
+  input:form
+  }
+  client.setHeader('x-api-key', apiKey)
+  return makeGraphQLRequest(updateUserMutation,variables)
  }

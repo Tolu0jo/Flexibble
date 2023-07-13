@@ -54,9 +54,25 @@ export const createUserMutation = `
 	}
 `;
 
+export const updateUserMutation = `
+	mutation UpdateUser($id: ID!, $input: UserUpdateInput!) {
+		userUpdate(by: { id: $id }, input: $input) {
+			user {
+        name
+				email
+				avatarUrl
+				description
+				githubUrl
+				linkedinUrl
+				id
+			}
+		}
+	}
+`;
+
 export const projectsQuery = `
   query getProjects($category: String, $endcursor: String) {
-    projectSearch(first: 8 , after: $endcursor, filter: {category: {eq: $category}}) {
+    projectSearch(first: 8, after: $endcursor, filter: {category: {eq: $category}}) {
       pageInfo {
         hasNextPage
         hasPreviousPage

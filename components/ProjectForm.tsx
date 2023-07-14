@@ -55,7 +55,7 @@ const ProjectForm = ({ type, session, project }: Props) => {
         router.push("/");
       }
       if (type === "edit") {
-        await updateProject(form, project?.id, token);
+        await updateProject(form, project?.id as string, token);
         router.push("/");
       }
     } catch (error) {

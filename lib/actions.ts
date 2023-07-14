@@ -14,7 +14,8 @@ import { GraphQLClient } from "graphql-request";
 
 const isproduction = process.env.NODE_ENV === "production";
 const apiUrl = isproduction
-  ? process.env.NEXT_PUBLIC_GRAFBASE_API_URL || ""
+  ? process.env.NEXT_PUBLIC_GRAFBASE_API_ENDPOINT
+   || ""
   : "http://127.0.0.1:4000/graphql";
 
 const apiKey = isproduction

@@ -18,7 +18,7 @@ const ProjectCard = ({id,image,title,name,avatarUrl,userId}:Props) => {
   useEffect(()=>{
    setRandomLikes(Math.floor(Math.random()*1000))
    setRandomviews(String(Math.floor((Math.random()*10000)/1000).toFixed(1)+"k"))
-  })
+  },[]);
   return (
     <div className='flexCenter flex-col rounded-2xl drop-shadow-card'>
         <Link href={`/project/${id}` } className="flexCenter group relative w-full h-full">

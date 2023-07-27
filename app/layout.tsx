@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar"
 import "./globals.css"
 import Footer from "@/components/Footer"
 export const metadata = {
-  title: 'Probble',
+  title: 'Flexibble',
   description: 'Showcase Developers projects',
 }
 

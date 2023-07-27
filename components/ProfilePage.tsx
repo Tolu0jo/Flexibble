@@ -88,30 +88,29 @@ const ProfilePage = ({ user, sessionId, paramsId }: Props) => {
                   textColor="text-black-100"
                 />
               </form>
-            ) : (
-              sessionId === paramsId && (
-                <Button
-                  title="Edit Profile"
-                  leftIcon="/pencile.svg"
-                  bgColor="bg-blue-400 !w-max"
-                  textColor="text-black-100"
-                  handleClick={handleClick}
-                />
-              )
-            )}
-
-            <Link href={`${user?.linkedinUrl}`}>
+            ) : sessionId === paramsId ? (
               <Button
-                title="Follow"
-                leftIcon="/plus-round.svg"
-                bgColor="bg-light-white-400 !w-max"
+                title="Edit Profile"
+                leftIcon="/pencile.svg"
+                bgColor="bg-blue-400 !w-max"
                 textColor="text-black-100"
+                handleClick={handleClick}
               />
-            </Link>
-
-            <Link href={`mailto:${user?.email}`}>
-              <Button title="Hire Me" leftIcon="/email.svg" />
-            </Link>
+            ) : (
+              <>
+                <Link href={`${user?.linkedinUrl}`}>
+                  <Button
+                    title="Follow"
+                    leftIcon="/plus-round.svg"
+                    bgColor="bg-light-white-400 !w-max"
+                    textColor="text-black-100"
+                  />
+                </Link>
+                <Link href={`mailto:${user?.email}`}>
+                  <Button title="Hire Me" leftIcon="/email.svg" />
+                </Link>
+              </>
+            )}
           </div>
         </div>
 

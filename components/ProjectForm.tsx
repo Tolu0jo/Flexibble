@@ -14,7 +14,7 @@ type Props = {
   project?: ProjectInterface ;
 };
 
-const ProjectForm = ({ type, session, project }: Props) => {
+const  ProjectForm = ({ type, session, project }: Props) => {
   const router = useRouter();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -90,20 +90,20 @@ const ProjectForm = ({ type, session, project }: Props) => {
       <FormField
         title="Title"
         state={form.title}
-        placeholder="Probble"
+        placeholder="Flexibble"
         setState={(value) => handleStateChange("title", value)}
       />
       <FormField
         title="Description"
         state={form.description}
-        placeholder="Probble"
+        placeholder="Flexibble"
         setState={(value) => handleStateChange("description", value)}
       />
       <FormField
         type="url"
         title="website Url "
         state={form.liveSiteUrl}
-        placeholder="https://new.pro"
+        placeholder="https://website.com"
         setState={(value) => handleStateChange("liveSiteUrl", value)}
       />
       <FormField

@@ -3,6 +3,7 @@ import { getUserProjects } from "@/lib/actions";
 import { UserProfile } from "@/common.types";
 import ProfilePage from "@/components/ProfilePage";
 import { getCurrentUser } from "@/lib/session";
+
 type Props = {
   params: {
     id: string;
